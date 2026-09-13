@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Бесконечный счетчик</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding-top: 40px; }
+    #counter { font-size: 256px; color: #2196f3; }
+  </style>
+</head>
+<body>
+  <h1>Бесконечный счётчик</h1>
+  <div id="counter">0</div>
+
+  <script>
+    const el = document.getElementById("counter");
+    const es = new EventSource("/gen");
+    es.onmessage = (e) => {
+      el.textContent = e.data;
+    };
+  </script>
+</body>
+</html>

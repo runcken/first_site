@@ -1,0 +1,8 @@
+# Все shell-скрипты всегда должны иметь LF
+*.sh text eol=lf
+
+# Dockerfile тоже лучше хранить с LF
+Dockerfile* text eol=lf
+
+# Скрипты PowerShell, наоборот, должны быть с CRLF
+*.ps1 text eol=crlf

@@ -1,0 +1,38 @@
+# Указывает, что это корневой файл конфигурации
+root = true
+
+# Настройки для всех файлов (*)
+[*]
+# Кодировка
+charset = utf-16LE
+# Тип конца строки (lf для Unix/Linux/macOS, crlf для Windows)
+end_of_line = lf
+# Добавлять пустую строку в конец файла при сохранении
+insert_final_newline = true
+# Удалять пробелы в конце строк
+trim_trailing_whitespace = true
+# Тип отступа (space или tab)
+indent_style = space
+# Размер отступа
+indent_size = 4
+
+# Python-файлы
+[*.py]
+indent_style = space
+indent_size = 4
+
+# Makefile требует табуляцию (иначе не работает)
+[Makefile]
+indent_style = tab
+
+# Файлы Markdown (сохраняем пробелы, т.к. два пробела в конце = перенос строки)
+[*.md]
+trim_trailing_whitespace = false
+
+# Для файла package.json
+[package.json]
+indent_size = 2
+
+# Для нескольких файлов
+[{.travis.yml, .jshintrc}]
+indent_size = 2

@@ -1,0 +1,54 @@
+[tool.ruff]
+# Целевая версия Python
+target-version = "py312"
+# Максимальная длина строки
+line-length = 120
+# Директории для поиска исходников
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+# Включаем ВСЕ доступные правила Ruff
+select = ["ALL"]
+# Исключаем правила, которые конфликтуют с форматтером
+ignore = [
+    "COM812",   # конфликт с trailing comma в форматтере
+    "ISC001",   # конфликт с конкатенацией строк в форматтере
+    "D",        # docstring-правила (включайте выборочно)
+]
+
+# Разрешить автоисправление для всех правил
+fixable = ["ALL"]
+unfixable = []
+
+# Игнорирование правил для конкретных файлов
+[tool.ruff.lint.per-file-ignores]
+# В тестах разрешаем assert, магические числа и отсутствие аннотаций
+"tests/**/*.py" = ["S101", "PLR2004", "ANN", "D"]
+# В init.py разрешаем неиспользуемые импорты (реэкспорт)
+"init.py" = ["F401"]
+# В скриптах разрешаем print
+"scripts/**/*.py" = ["T20"]
+
+# Настройки сортировки импортов (замена isort)
+[tool.ruff.lint.isort]
+known-first-party = ["myproject"]  # замените на имя вашего пакета
+
+# Настройки форматирования (замена Black)
+[tool.ruff.format]
+quote-style = "double"           # двойные кавычки
+indent-style = "space"           # отступы пробелами
+docstring-code-format = true     # форматировать код внутри docstring
+skip-magic-trailing-comma = false
+line-ending = "auto"             # автоопределение конца строки
+
+[tool.ruff.lint.mccabe]
+max-complexity = 7
+
+[tool.ruff.lint.pylint]
+max-args = 6
+
+[tool.ruff.lint.pylint]
+max-branches = 13
+
+[tool.ruff.lint.pylint]
+max-statements = 55
